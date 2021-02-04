@@ -1,6 +1,13 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const { getUsers, createUser } = require('./src/users')
+
 const app = express()
+app.use(bodyParser.json())
 const port = 3000
+
+app.get('/users', getUsers)
+app.post('/users', createUser)
 
 app.get('/', (request, response) => {
   // do a bunch of stuff
